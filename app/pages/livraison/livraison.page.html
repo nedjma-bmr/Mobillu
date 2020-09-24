@@ -1,0 +1,54 @@
+<ion-header [translucent] ="true">
+  <ion-toolbar color ="green">
+    <ion-title>
+     Bons de Livraison
+    </ion-title>
+    <ion-buttons slot = "start">
+      <ion-menu-button  menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class ="ion-padding">
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  color="success" >
+    <!-- ajout d'un nouveau devis -->
+    <ion-fab-button color = "green" >
+      <ion-icon name="add" (click)="ajouterBonLivraison()" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+<!-- Liste des devis de tous les clients-->
+  <ion-list *ngFor = "let bonLivraison of livraison " style="margin-top: 15px;" > 
+
+    
+    
+   <span   [ngClass]="{'active-item' : bonLivraison.estValider==1}"></span>
+   <span [ngClass]="{'nonActive-item' : bonLivraison.estValider==0}" ></span>
+    <ion-item button (click)="detailLivraison(bonLivraison.id_bonLiv)" 
+   
+    >
+   
+    <ion-label>
+      <h2 style="margin-top: -2px;margin-bottom: 6px;"> Bon N°: {{bonLivraison.num_bonLiv}}</h2>
+     
+
+     
+       <p> Client : {{ bonLivraison.design_client}}</p>
+       <h3 *ngIf="bonLivraison.estValider==0"> Valide : {{this.valider}}</h3>
+       <h3 *ngIf="bonLivraison.estValider==1"> Valide : {{this.Valider}}</h3>
+      </ion-label>
+
+      <ion-label slot="end" style="margin-top: -43px;
+      margin-right: -75PX;"> {{ bonLivraison.date_bonLiv}}</ion-label>
+      
+      </ion-item>
+    
+     
+    
+      
+    </ion-list>
+    
+</ion-content>
+

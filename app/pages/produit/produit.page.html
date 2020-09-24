@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="green">
+    <ion-title>produit</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="success">
+    <!-- ajout d'un nouvel produit-->
+    <ion-fab-button color="green">
+      <ion-icon name="add" (click)="addProduit()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-item>
+    <!-- barre de recherche avec filtration-->
+    <ion-searchbar
+      search-icon="search-outline"
+      showcancelbutton=""
+      (ionInput)="filterList($event)"
+      placeholder="Rechercher"
+    ></ion-searchbar>
+    <ion-label style="color: #999"></ion-label>
+    <ion-select interface="popover" [(ngModel)]="gender">
+      <ion-select-option value="code_prod"> Code</ion-select-option>
+      <ion-select-option value="design_prod"> Designation</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <!-- afficher la liste des produits pour chaque famille -->
+  <ion-list *ngFor="let famille of familles">
+    <h3 style="color: #5b489a; font-weight: bold">{{famille.design_fam}}</h3>
+    <div *ngFor="let produit of displayProduits">
+      <ion-item *ngIf="produit.code_fami === famille.code_fam">
+        <ion-item-sliding>
+          <ion-item button (click)="openDetail()">
+            <ion-thumbnail item-left style="margin-right: 10px">
+              <ion-img
+                *ngIf="produit.image"
+                [src]="produit.image"
+                style="border-radius: 50% !important "
+              ></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h3 style="font-size: 18px; font-weight: bold">
+                {{produit.design_prod}}
+              </h3>
+              <p>{{ produit.pvht}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option
+              color="danger"
+              (click)="removeproduit(produit.id_prod)"
+            >
+              <ion-label> Supprimer</ion-label>
+              <ion-icon name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+          <ion-item-options side="start">
+            <ion-item-option color="secondary" (click)="updateproduit(produit)">
+              <ion-label> Modifier</ion-label>
+              <ion-icon name="brush"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

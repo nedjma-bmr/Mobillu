@@ -1,0 +1,28 @@
+ion-title{
+    text-align: center;
+}
+
+.ion-invalid.ion-touched ion-label {
+    color: var(--ion-color-danger);
+}
+
+.ion-color-green {
+    --ion-color-base: rgb(13, 161, 187);
+    --ion-color-base-rgb: var(--ion-color-green-rgb);
+    --ion-color-contrast: var(--ion-color-green-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
+    --ion-color-shade: var(--ion-color-green-shade);
+    --ion-color-tint: var(--ion-color-green-tint);
+  }
+.margin_ville{
+    margin-top: 16px;
+}
+.margin_code{
+    margin-top: -14px;
+}
+.ion-margin-top{
+    margin-top: 40px;
+}
+#close_size{
+    font-size: 20px;
+}

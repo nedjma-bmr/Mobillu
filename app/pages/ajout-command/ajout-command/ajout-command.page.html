@@ -1,0 +1,161 @@
+<ion-header style="margin-top: -9px">
+  <ion-toolbar color="green">
+    <ion-buttons slot="start" full="outline">
+      <ion-button (click)=" closeModal() ">
+        <ion-icon name="arrow-back" style="margin-top: 10px"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- La formulaire a remplir pour ajouter une nouvelle commande-->
+  <form (ngSubmit)="submitForm1()" novalidate>
+    <h5 style="text-align: center; font-weight: bold">
+      Commande № {{+this.num+1}}
+    </h5>
+
+    <div style="display: flex; align-items: baseline; justify-content: center">
+      <ion-icon name="calendar-outline" color="secondary"></ion-icon>
+      <h5
+        position="floating"
+        style="text-align: center; margin-left: 10px; font-weight: bold"
+      >
+        {{ today | date}}
+      </h5>
+    </div>
+
+    <!-- Le champ pour selectionner un client -->
+    <ion-item lines="full" class="itm">
+      <ion-label style="color: rgb(58, 57, 57)"
+        >Séléctionner un client</ion-label
+      >
+
+      <ionic-selectable
+        [(ngModel)]="clientcmd"
+        itemValueField="id"
+        itemTextField="design_client"
+        [items]="clients"
+        headerColor="rgb(8, 60, 70)"
+        [ngModelOptions]="{standalone: true}"
+      >
+        <div class="ionic-selectable-icon"></div>
+        <ng-template ionicSelectableCloseButtonTemplate>
+          <ion-icon name="arrow-back"></ion-icon>
+        </ng-template>
+      </ionic-selectable>
+    </ion-item>
+
+    <!-- un bouton pour ajouter des produits a la commande -->
+    <div
+    ion-button
+      class="addproduit"
+      (click)="AjouterProduit()"
+      color="medium"
+      fill="outline"
+    >
+      <ion-icon name="add-circle-outline" style="color:#b93030;font-size: 19px;margin-right: 5px;font-weight: bold;"></ion-icon>
+      <ion-label style="color:#b93030;font-size: 17px;font-weight: bold;"> Ajouter des produits</ion-label>
+  </div>
+
+    <br />
+    <br />
+    <br />
+
+    <ion-grid>
+      <!-- afficher la liste des produits ajoutés-->
+
+      <ion-row style="margin-top: 12px">
+        <ion-col
+          width-15
+          padding
+          style="
+            background-color: rgb(93, 106, 114);
+            color: white;
+            margin-left: 3px;
+          "
+        >
+          <div style="text-align: center">Nom</div></ion-col
+        >
+        <ion-col
+          width-25
+          padding
+          style="
+            background-color: rgb(40, 42, 46);
+            color: white;
+            margin-right: -25px;
+          "
+          ><div style="margin-left: 16px">Quantité</div></ion-col
+        >
+        <ion-col
+          width-35
+          padding
+          style="
+            background-color: rgb(84, 90, 102);
+            color: white;
+            margin-right: 3px;
+          "
+        >
+          <div style="text-align: center">Prix</div>
+        </ion-col>
+      </ion-row>
+
+      <ion-list>
+        <ion-item lines="full" *ngFor="let list of cmdProds ">
+          <ion-row>
+            <ion-col width-15>
+              <div
+                style="
+                  text-align: center;
+                  margin-right: 9px;
+                  margin-left: -12px;
+                  margin-right: -20px;
+                "
+              >
+                {{list.design_prod}}
+              </div></ion-col
+            >
+            <ion-col width-25 style="margin-left: 70px; margin-right: 20px"
+              ><div
+                style="
+                  text-align: center;
+                  margin-right: 60px;
+                  margin-left: 12px;
+                "
+              >
+                {{list.qte}}
+              </div></ion-col
+            >
+
+            <ion-col width-15
+              ><div style="text-align: center">{{list.pvht}}</div></ion-col
+            >
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-grid>
+
+    <br /><br />
+    <br /><br />
+    <br />
+    <div  class="my-width">
+      <!-- le boutton qui declenche la page importer un devis -->
+      <ion-button
+        style="width: 50%"
+        (click)="importerDevis(clientcmd.id)"
+        large
+        color="green"
+        [disabled]="!clientcmd.id"
+      >
+        <b>Importer</b>
+      </ion-button>
+      <!--  Enregistrer les informations de la nouvelle commande -->
+      <ion-button
+        style="width: 50%"
+        type="submit"
+        color="green"
+        expand="block"
+        ><b>Enregister</b></ion-button
+      >
+    </div>
+  </form>
+</ion-content>

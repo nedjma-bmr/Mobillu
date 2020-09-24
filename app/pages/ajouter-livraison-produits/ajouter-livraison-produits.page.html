@@ -1,0 +1,140 @@
+<ion-header color="green">
+   
+</ion-header>
+
+<ion-toolbar color = "green">
+    <ion-buttons slot="start" full="outline" style="margin-bottom: -8px;">
+      <ion-button color="dark" (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+
+<ion-content class ="padding" >
+<ion-item style="text-align: center; font-weight: bolder; color : gray" lines="none" >
+    <ion-label style="margin-top: 25px;"> Familles </ion-label>
+
+</ion-item>
+<!-- afficher la liste des familles pour choisir-->
+<ion-item style="padding-left: 25px; margin-top: -14px;" lines="none">
+    
+    <ion-label style="color : gray ; font-weight : bold" > </ion-label>
+    <ion-select ok-text="Ok" cancel-text="Annuler" [(ngModel)]="produitModel.code_fami"
+     [ngModelOptions]="{standalone: true}" (ionChange)="SelectedFamille($event)">
+    <ion-select-option *ngFor = "let famille of familles" [value]="famille.code_fam"> 
+      {{famille.design_fam}}
+    </ion-select-option>
+    
+    </ion-select>
+    </ion-item>
+
+    <ion-item style="text-align: center; font-weight: bolder; color : gray" lines="none" 
+    >
+        <ion-label > Produits </ion-label>
+    </ion-item>
+    
+
+<ion-item style="margin-top: -9px;" lines="none">
+  <ion-label> --Séléctionner un produit-- </ion-label>
+  <!-- afficher la liste des produits d'une famille -->
+    <ionic-selectable 
+    
+    [(ngModel)]="ProduitAfficher"
+    itemValueField="id_prod"
+    itemTextField="design_prod"
+    [canSearch]="true" 
+    [items]="Produit"
+    headerColor="rgb(8, 60, 70)" 
+    (onChange)="afficherProduit()"
+    [ngModelOptions]="{standalone: true}"
+    >
+ 
+    <ng-template ionicSelectableCloseButtonTemplate>
+      <ion-icon name="arrow-back"></ion-icon>
+    </ng-template>
+
+    
+  </ionic-selectable>
+    </ion-item>
+    <!-- afficher les informations du produit séléctionné -->
+  <div *ngIf="ProduitAfficher.id_prod" style="margin-left: 25px;">
+  <ion-item lines="none" style="color: dimgray;
+  margin-bottom: 14px" >
+    <ion-label > 
+      <h2 > Prix de vente TH : {{ProduitAfficher.pvht}}   </h2>
+     </ion-label>
+      
+
+  </ion-item>
+  <ion-item lines="none" style="color: dimgray;
+  margin-bottom: 14px">
+    <ion-label  > 
+      <h2 class="one"> TVA({{ProduitAfficher.TVA}}%) : {{newLivraisonProduit.TVA.toFixed(2)}} </h2>
+     </ion-label>
+       
+  </ion-item>
+  <ion-item lines="none" style="color: dimgray;
+  margin-bottom: 14px">
+    <ion-label >
+      <h2 class="one"> Prix de vente TTC  :  {{newLivraisonProduit.prixttc.toFixed(2)}} </h2>
+     </ion-label>
+     <!-- prixTTC = prixHT + (prixHt * tva)--> 
+  </ion-item>
+  <ion-item lines="none" style="color: dimgray;
+  margin-bottom: 14px">
+    <ion-label position = "fixed" > 
+      <h2 class="one"> Quantitée  :   </h2>
+    
+     </ion-label>
+     <ion-row class ="droit">
+      <ion-col col-6 class="calculation" width-25 >
+        <ion-button color="danger" fill="clear" (click)="decrease()" class="gg">
+          <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+        </ion-button>
+      
+
+      <span style="font-size: 18px;">{{qteProduit}}</span>
+
+      
+        <ion-button color="success" fill="clear" (click)="increase()" class="gg">
+          <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      
+</ion-row>
+
+  </ion-item>
+
+  <ion-item lines="none" style="color: dimgray;
+  margin-bottom: 14px">
+    <ion-label  > 
+      <h2 class="one"> Prix pour quantitée  : {{newLivraisonProduit.puht.toFixed(2) }} 
+      </h2> 
+     </ion-label>
+      
+  </ion-item>
+   
+
+  <ion-item lines="full" style="color: black;
+  margin-bottom: 14px">
+    <ion-label position="floating" > 
+       Remise  : 
+      
+     </ion-label>
+     
+     <ion-input type="text" name="remise" required [(ngModel)]="newLivraisonProduit.remise" type="number" [disabled] ="!checked" 
+     ></ion-input> 
+     <ion-checkbox   color="primary"  slot="start" [(ngModel)]="checked" ></ion-checkbox>
+  </ion-item>
+   
+</div>
+<!-- bouton d'ajout d'un produit -->
+  <ion-button expand = "block" color = "green" fill ="outline"
+   shape="round" size="Default" class="ajouterLivraison" (click)="Register()">
+    Ajouter
+  </ion-button>
+  
+  
+  
+</ion-content>

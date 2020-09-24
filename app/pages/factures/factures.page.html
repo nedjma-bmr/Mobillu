@@ -1,0 +1,53 @@
+<ion-header [translucent] ="true">
+  <ion-toolbar color ="green">
+    <ion-title>
+     Factures
+    </ion-title>
+    <ion-buttons slot = "start">
+      <ion-menu-button  menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class ="ion-padding">
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  color="success" >
+    <!-- ajout d'un nouveau devis -->
+    <ion-fab-button color = "green" >
+      <ion-icon name="add" (click)="ajouterBonFacture()" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+<!-- Liste des devis de tous les clients-->
+  <ion-list *ngFor = "let bonFacture of facture " > 
+
+    
+    
+   
+    <ion-item button (click)="detailFacture(bonFacture.id_Fact)" 
+   
+    >
+   
+    <ion-label>
+      <h2> Numéro : {{bonFacture.num_Fact}}</h2>
+     
+
+     
+       <p> Client : {{ bonFacture.design_client}}</p>
+       
+       
+      </ion-label>
+
+      <ion-label slot="end" style="margin-top: -15PX;
+      margin-right: -75PX;"> {{ bonFacture.date_Fact}}</ion-label>
+      
+      </ion-item>
+    
+     
+    
+      
+    </ion-list>
+    
+</ion-content>
+

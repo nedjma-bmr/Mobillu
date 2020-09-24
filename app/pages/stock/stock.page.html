@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="principale">
+    <ion-title>stock</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <!-- afficher la liste des stocks -->
+  <ion-item button *ngFor="let produit of stocks" style="margin-top: 20px;">
+    <ion-thumbnail item-left  style="margin-right: 10px;" >
+      <ion-img *ngIf="produit.image" [src]="produit.image" style="border-radius: 50% !important ;"></ion-img>
+    </ion-thumbnail>
+     <ion-label>
+   <h4 style="font-weight: bold;">{{produit.design_prod}}</h4>
+    <p>prix de vente HT: <span>{{ produit.pvht}} DA</span></p>
+    <p>disponibilité: <span>{{ produit.q_stock }}</span>  </p>
+    <p>magasin: <span>{{ produit.magasin }}</span>  </p>
+   </ion-label>
+   </ion-item>
+ 
+ 
+</ion-content>

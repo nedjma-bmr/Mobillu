@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title >détails</ion-title>
+    <ion-buttons slot = "start">
+      <ion-back-button defaultHref="clients"></ion-back-button>
+    </ion-buttons>
+
+    
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content padding>
+    <ion-toolbar>
+      <!-- afficher les buttons avc scrollabre option dans le toolbar -->
+      <ion-segment scrollable (ionChange)="segmentChanged()" [(ngModel)]="segment" color="success">
+        <ion-segment-button value="0">
+          Devis
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          Commandes
+        </ion-segment-button>
+        
+        <ion-segment-button value="2">
+         Bons de Livraison
+        </ion-segment-button>
+
+        <ion-segment-button value="3">
+          Factures
+        </ion-segment-button>
+        
+      </ion-segment>
+    </ion-toolbar>
+  
+    <ion-slides #slides (ionSlideDidChange)="slideChanged()" >
+      <!-- les slides selon leur segment -->
+      <ion-slide>
+        
+            <!-- liste des devis d'un client -->
+            <ion-list class="detail" >
+              <ion-item *ngFor="let devis of clientDevis" >
+              <ion-label >
+               <h3>
+                <ion-icon name="document-text-outline"></ion-icon>
+                Bon N° : <span > {{ devis.num_proforma }} </span>
+              </h3>
+              
+               <p>
+                <ion-icon name="calendar-outline"></ion-icon>
+               Date :   <span class="date"> {{ devis.date_proforma }} </span>
+                
+               </p>
+
+              </ion-label>
+            </ion-item>  
+            
+            </ion-list>
+          
+     
+      </ion-slide>
+      <ion-slide>
+        2
+      </ion-slide>
+      
+      <ion-slide>
+        <ion-row >
+          <ion-col width-33 style="padding: 3px; ">
+            <!-- liste des devis d'un client -->
+            <h3 style="color: #5b489a;font-weight:bold;">Bons de Livraison Facturés </h3>
+            <div *ngFor="let livraison of clientLivraison">
+        <ion-item  *ngIf="livraison.estValider==1">
+              <ion-label >
+               <h3> Bon N° : {{ livraison.num_bonLiv }} </h3>
+               <p>
+                
+                Date : {{ livraison.date_bonLiv }} 
+                
+               </p>
+
+              </ion-label>
+            </ion-item>  
+          </div>
+
+          <h3 style="color: #5b489a;font-weight:bold;">Bons de Livraison non Facturés </h3>
+            <div *ngFor="let livraison of clientLivraison">
+        <ion-item  *ngIf="livraison.estValider==0">
+              <ion-label >
+               <h3> Bon N° :  {{ livraison.num_bonLiv }} </h3>
+               <p>
+                
+               Date :  {{ livraison.date_bonLiv }} 
+                
+               </p>
+
+              </ion-label>
+            </ion-item>  
+          </div>
+          
+          
+          </ion-col>
+      </ion-row>
+      </ion-slide>
+      <ion-slide>
+        4
+      </ion-slide>
+    </ion-slides>
+  
+  </ion-content>
+</ion-content>

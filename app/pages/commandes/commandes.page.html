@@ -1,0 +1,67 @@
+<ion-header [translucent] ="true">
+  <ion-toolbar color="principale">
+    <ion-title>Commandes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      
+    <ion-buttons slot="end">
+    
+      <!-- icon recherche affiche la barre de recherche en la cliquant -->
+       <ion-button (click)="clickedSearchIcon($event)">
+        <ion-icon  slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+       <!-- affiche les bouttons supprimer et modifier commande -->
+      <ion-button (click)="modification()">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+  <!-- affiche les icons du suppression ou modification selon qu'on a cliqué sur modifier ou supprimer-->
+  <ion-list *ngIf="afficherModification" class="modifiercmd">
+    <ion-item (click)="Modifier()">Modifier</ion-item>
+    <ion-item (click)="Supprimer()">Supprimer</ion-item>
+  </ion-list>
+</ion-header>
+
+<ion-content>
+  <!-- button d'ajout d'une commande -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="success" >
+    
+    <ion-fab-button color="green">
+      <ion-icon name="add" (click)="ajoutercmd()"  ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- barre de recherche -->
+  <ion-item style="border:0em" *ngIf="showSearchBar">
+    <ion-searchbar
+      search-icon="search-outline"
+      showcancelbutton=""
+      showCancelButton="always"
+      (ionInput)="filterList($event)"
+      placeholder="Rechercher"
+      style="--border-radius: 20px;"
+    ></ion-searchbar>
+    <ion-label style="color: #999;"></ion-label>
+    <ion-select interface="popover" [(ngModel)]="gender">
+      <ion-select-option value="numero"> Numéro</ion-select-option>
+      <ion-select-option value="date"> Date</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <!--listes des commandes-->
+  <ion-list *ngFor="let commande of displayCommandes">  
+  <ion-item  button (click)="ouvrirDetails(commande)">
+    <ion-badge   padding style="margin-right:10px;border-radius: 50%;padding:10px;background-color: #495057;">{{ commande.NumCmd }} </ion-badge>
+    <div>
+      
+     <h6 style="font-weight: bold;"> {{commande.design_client}}</h6>
+      <p>{{commande.date | date}}</p>
+    </div>
+    
+    <ion-icon  class="icons" name="remove-circle" side="start" *ngIf= "showDelete" button (click)=" SupprimerCmd(commande.NumCmd)"></ion-icon>
+    <ion-icon  class="icons" name="create" side="start" *ngIf="showEdit" button (click)="ModifierCmd(commande)"></ion-icon>
+    
+  </ion-item>
+</ion-list>
+</ion-content>

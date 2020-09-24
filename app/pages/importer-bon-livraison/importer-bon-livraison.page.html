@@ -1,0 +1,39 @@
+<ion-header>
+  
+  <ion-toolbar color="green">
+    <div class ="ion-text-end">
+      <ion-buttons slot="start">
+        <ion-button color="dark" (click)="dismissModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+        </ion-buttons>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="end" >
+    <ion-button color = "success" (click)="afficherProduitslivraison()" *ngIf="select">
+      Suivant
+    </ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+
+<ion-content class ="ion-padding">
+
+
+  <ion-list lines="full" style="    margin-top: -19px;">
+ <ion-item *ngFor = "let livraison of BonsLivraisonClientImporter ; let i = index">    
+<ion-label> Bon N° : {{livraison.num_bonLiv}}
+  <br/>
+  <p>       Date du Bon livraison : {{livraison.date_bonLiv}} </p>
+  <br/>
+
+         
+</ion-label>
+<ion-checkbox  [(ngModel)]="livraison.value"  color="primary"  slot="start"  (ionChange)="addCheckbox($event,livraison.id_bonLiv)"></ion-checkbox>
+</ion-item>
+  
+  </ion-list>
+
+</ion-content>

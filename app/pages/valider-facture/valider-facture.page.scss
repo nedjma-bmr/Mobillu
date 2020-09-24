@@ -1,0 +1,37 @@
+.ion-color-green {
+  --ion-color-base: rgb(13, 161, 187);
+    --ion-color-base-rgb: var(--ion-color-green-rgb);
+    --ion-color-contrast: var(--ion-color-green-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
+    --ion-color-shade: var(--ion-color-green-shade);
+    --ion-color-tint: var(--ion-color-green-tint);
+  }
+
+
+  .detailProduitCommande{
+    font-size: 18px;
+    margin-left: 14px;
+    margin-top: -2px;
+  }
+  ion-card{
+    margin-top: 16px;
+    margin-left: -1px;
+    width: 100%;
+  }
+
+  .totalProduit{
+    font-size: 18px;
+    margin-left: 14px;
+    margin-top: -2px;
+    font-weight: bold;
+  }
+
+.validerBonCommande{
+  color: white;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+ion-toolbar{
+  margin-top: -9px;
+}

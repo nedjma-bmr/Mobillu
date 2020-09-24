@@ -1,0 +1,84 @@
+<!--<div *ngIf="showSplash" class="splash">
+ <div class="spiner">  
+
+ </div>
+</div>-->
+
+
+<ion-app>
+  <ion-menu menuId="main-menu" content-id="main">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/clients"  routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-label>Fiche Client</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/devis"  routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label>Devis</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      
+        <ion-menu-toggle>
+          <ion-item routerLink="/commandes" routerDirection="root" routerLinkActive="active-item">
+          <ion-icon name="reader-outline" slot="start"></ion-icon>
+          <ion-label>Commandes Clients</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+        
+        
+        <ion-menu-toggle>
+          <ion-item routerLink="/livraison" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="receipt" slot="start"></ion-icon>
+            <ion-label> Bons de Livraison</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/factures" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="calculator" slot="start"></ion-icon>
+            <ion-label>Factures</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        
+        <ion-menu-toggle>
+          <ion-item routerLink="/produits" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="pricetags-sharp" slot="start"></ion-icon>
+            <ion-label>Produits</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/stock"  routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-label>Stock</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <br>
+        <br>
+        <br>
+        <br>
+        <ion-menu-toggle>
+          <ion-item routerLink="/login" >
+            <ion-icon name="exit" slot="start"></ion-icon>
+            <ion-label>Se déconnecter</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        
+        
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

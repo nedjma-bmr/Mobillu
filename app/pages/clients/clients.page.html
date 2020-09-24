@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color = "green">
+     
+    <ion-title style="text-align: center;margin-right: 40px;">Clients</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  </ion-header>
+  <!-- barre de recherche avec filtration-->
+  <ion-item lines = "full">
+    <ion-searchbar
+  search-icon ="search-outline"
+  showcancelbutton=""
+  (ionInput)="filterList($event)"
+  placeholder="Rechercher"
+></ion-searchbar>
+    <ion-label style = "color:#999"></ion-label>
+    <ion-select interface="popover" [(ngModel)]="gender">
+      <ion-select-option value="code"> Code</ion-select-option>
+     <ion-select-option value="nom"> Nom</ion-select-option>
+     
+    </ion-select>
+    
+  </ion-item> 
+  
+
+
+<ion-content class="ion-padding">
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  color="success" >
+    <!-- icon d'ajouter-->
+    <ion-fab-button color = "green" >
+      <ion-icon name="add" (click)="addClient()" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- liste des clients -->
+  <div class = "margin" >
+<ion-list lines  *ngFor = "let client of displayClients" lines="full" >
+  <ion-item-sliding>
+    <ion-item button (click)="openDetail(client.id)" class = "list" > 
+      <ion-label> 
+        
+        <h5 style="font-weight: bolder;">
+          <ion-icon name="person"></ion-icon> {{client.design_client}}
+        </h5>
+     
+        <h5 >  {{ 'De : ' +  client.adresse  }}</h5>
+
+        <p>
+          <ion-icon name="call"></ion-icon> {{client.tel}}
+        </p>
+       
+      </ion-label>
+      
+    </ion-item>
+    
+    <!--supprimer et modifier () -->
+    <ion-item-options side="end" >
+      <ion-item-option color="danger" (click)="removeClient(client.id)">
+        <ion-label> Supprimer</ion-label>
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+    <ion-item-options side="start" >
+      <ion-item-option color="secondary" (click)="updateClient(client)">
+        <ion-label > Modifier</ion-label>
+        <ion-icon name="brush"></ion-icon>
+      
+      </ion-item-option>
+    </ion-item-options>
+        
+    
+  </ion-item-sliding>
+
+
+</ion-list>
+</div>
+</ion-content>
+
+
+

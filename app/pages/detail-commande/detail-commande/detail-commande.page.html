@@ -1,0 +1,83 @@
+<ion-header no-header>
+  <div class="ion-text-end">
+    <ion-button (click)="dismissModal()" fill="clear" color="dark">
+      <ion-icon name="close" slot="start"></ion-icon>
+    </ion-button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <!-- Afiicher la liste des commandes -->
+  <ion-list>
+    <!-- le numéro de la commande -->
+    <ion-item>
+      <ion-label>
+        Commande №
+        <span style="font-size: 18px; font-weight: bold;">
+          {{cmnd.NumCmd}}
+        </span>
+      </ion-label>
+    </ion-item>
+    <!-- le nom du client qui a fait la commande -->
+    <ion-item>
+      <ion-label>
+        client :
+        <span style="font-size: 18px; font-weight: bold;">
+          {{this.design_client}}
+        </span>
+      </ion-label>
+    </ion-item>
+    <!-- la date d'etablissement de la commande -->
+    <ion-item>
+      <ion-label>
+        Date :
+        <span style="font-size: 18px; font-weight: bold;"> {{cmnd.date}} </span>
+      </ion-label>
+    </ion-item>
+    <!-- le total HT -->
+    <ion-item>
+      <ion-label>
+        Total HT : <b>{{ this.tt_ht }}</b> 
+        <span style="font-size: 18px; font-weight: bold;"> </span>
+      </ion-label>
+    </ion-item>
+    <!-- la somme des TVA de la commande -->
+    <ion-item>
+      <ion-label>
+        Total TVA : <b>{{ this.tt_tva }}</b> 
+        <span style="font-size: 18px; font-weight: bold;"></span>
+      </ion-label>
+    </ion-item>
+    <!-- le total TTC -->
+    <ion-item>
+      <ion-label>
+        Total TTC : <b>{{ this.TTC }}</b>
+        <span style="font-size: 18px; font-weight: bold;"> </span>
+      </ion-label>
+    </ion-item>
+
+    <!-- le % et le montant de la remise -->
+    <ion-item>  
+  <ion-label position = "fixed" > <h2> Remise   </h2> </ion-label>
+  <b>  ( {{this.remise}}%):</b>
+  <b>  {{this.montant_remise}}</b>
+</ion-item>
+<!-- le total prix de la commande -->
+<ion-item>  
+  <ion-label position = "fixed" > <h2> Total : </h2> </ion-label>
+  <b class="Total"> {{this.total}}</b>
+  </ion-item>
+  </ion-list>
+ 
+<!-- Afficher les produits de  la commande -->
+<ion-button color="secondary" expand="block" (click)="voirproduitsmodal()"
+>voir les produits</ion-button
+>
+
+  <!-- Telecharger la commande -->
+  <ion-button color="secondary" expand="block" (click)="DownloadPdf()"
+    >Imprimer</ion-button
+  >
+
+</ion-content>
+

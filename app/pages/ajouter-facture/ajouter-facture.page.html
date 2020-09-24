@@ -1,0 +1,81 @@
+
+  <ion-toolbar>
+    <ion-title style="color: black  ; text-align: center;">Nouvelle facture </ion-title>
+  </ion-toolbar>
+
+
+<ion-content class ="padding">
+<ion-list>
+  <ion-item lines="none" >
+    <ion-label > Num Bon  :  {{this.numFact}}   </ion-label>
+    
+  </ion-item>
+  <ion-item lines="none" >
+    <ion-label> Date : </ion-label>
+    <ion-datetime  [(ngModel)]="myDate" name = "date_proforma" 
+    cancelText= "Annuler" doneText="OK" displayFormat="DD-MM-YYYY" style="    margin-bottom: -6px;"> </ion-datetime>
+  </ion-item>
+
+  <ion-item lines="none">
+  
+      <ion-label class="Client">
+         Client </ion-label>
+  </ion-item>
+  
+
+<ion-item class="itm" lines="none">
+<ion-label *ngIf="!isSelected"> --Séléctionner un client-- </ion-label>
+<!-- afficher la liste des clients  -->
+  <ionic-selectable  
+  
+  [(ngModel)]="clientFacture"
+  itemValueField="id"
+  itemTextField="design_client"
+  [canSearch]="true" 
+  [items]="clients"
+  headerColor="rgb(8, 60, 70)" 
+  (onChange)="change()"
+  [ngModelOptions]="{standalone: true}"
+  [hasVirtualScroll]="true"
+  searchPlaceholder="Rechercher"
+  searchFailText="Aucun client trouvé "
+
+  >
+
+  <div class =" ionic-selectable-inner">
+  <div class ="ionic-selectable-icon"></div>
+  <ng-template ionicSelectableCloseButtonTemplate>
+    <ion-icon name="arrow-back"></ion-icon>
+  </ng-template>
+
+</div>
+</ionic-selectable>
+</ion-item>
+</ion-list>
+<!-- <ion-buttons expand="block">
+<ion-button routerLink="/devis" expand="block" color = "green" >
+  Nouveau
+  </ion-button>
+
+  <ion-button routerLink="/devis" expand="block" color = "green" style="    margin-left: 38%;" >
+    Importer
+    </ion-button>
+  </ion-buttons>
+!-->
+
+<ion-col col-6> 
+  <ion-button  color="green" class="my-width" (click)="closeModal()" large >
+    <b>Annuler</b>
+  </ion-button>
+</ion-col>
+
+<ion-col col-6>
+  <ion-button  color="green" class="my-width" (click)="importerBonLivraison(clientFacture.id)" large [disabled]="!clientFacture.id">
+    <b>Importer</b>
+  </ion-button>
+</ion-col>
+
+
+
+
+</ion-content>

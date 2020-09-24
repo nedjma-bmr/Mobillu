@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color = "green">
+    <ion-buttons slot="end" full="outline">
+      <ion-button color="dark" (click)="closeModal()" id="close_size">
+        <ion-icon name="close" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{isUpdate ?  'Modifier' : 'Ajout'}} Client</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- formulaire d'ajout d'un client -->
+  <form #f="ngForm" novalidate   (ngSubmit)="onSubmit()">
+    <ion-list>
+    <ion-item class="margin_code">
+      <ion-label position="floating" > Code </ion-label>
+      <ion-input type="text" name="code_client" required [(ngModel)]="clientModel.code_client"   #code_clientCtrl="ngModel" type="number"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!code_clientCtrl.valid && code_clientCtrl.touched">
+      <ion-text color="danger">Veuillez saisir le code</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" > Désignation </ion-label>
+      <ion-input [(ngModel)]="clientModel.design_client" required minlength="4" name ="design_client" #design_clientCtrl="ngModel" type ="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!design_clientCtrl.valid && design_clientCtrl.touched">
+      <ion-text color="danger">Le nom est obligatoire</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" > Adresse </ion-label>
+      <ion-input [(ngModel)]="clientModel.adresse" required name ="adresse" #adresseCtrl="ngModel"  ></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!adresseCtrl.valid && adresseCtrl.touched">
+      <ion-text color="danger">Veuillez saisir l'adresse</ion-text>
+    </ion-item>
+      <ion-item class="margin_ville">
+      <ion-label style="color : dimgray ; font-weight : bold" >  <--Séléctionner une ville--> </ion-label>
+      <ion-select interface="popover" [(ngModel)]="clientModel.id_ville" [selectedText]="clientModel.design_ville"
+       [ngModelOptions]="{standalone: true}" (ionChange)="changeDesignVille(clientModel.id_ville)">
+      <ion-select-option *ngFor = "let ville of villes" [value]="ville.id_ville" > 
+        {{ville.design_ville}}
+      </ion-select-option>
+      
+      </ion-select>
+      </ion-item>
+
+
+   
+    <ion-item>
+      <ion-label position="floating" > Téléphone </ion-label>
+      <ion-input type="number" [(ngModel)]="clientModel.tel"  maxlength="10" required name ="tel"
+       #telCtrl="ngModel" ></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!telCtrl.valid && telCtrl.touched">
+      <ion-text color="danger">Veuillez renseigner votre numéro de téléphone</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" > Email </ion-label>
+      <ion-input type ="email" name="email_client" required [(ngModel)]="clientModel.email_client"  #email_clientCtrl="ngModel" email></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!email_clientCtrl.valid && email_clientCtrl.touched ">
+      <ion-text color="danger">Email n'est pas valide </ion-text>
+    </ion-item>
+    
+
+    
+    <ion-item>
+      <ion-label position="floating" > Adresse de Livraison </ion-label>
+      <ion-input [(ngModel)]="clientModel.adresse_liv" required name ="adresse_liv" #adresse_livCtrl="ngModel"  ></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!adresse_livCtrl.valid && adresse_livCtrl.touched">
+      <ion-text color="danger">Veuillez saisir votre adresse de livraison</ion-text>
+    </ion-item>
+
+
+    
+    <ion-button  type ="submit" fill="outline" expand="block" color="green" class="ion-margin-top"
+     type="submit" [disabled]="!f.valid"> {{ isUpdate ? 'Modifier ' : 'Enregister'}}
+    
+    </ion-button>
+  
+  </ion-list>
+  </form>
+
+</ion-content>
+

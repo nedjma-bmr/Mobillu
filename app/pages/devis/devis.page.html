@@ -1,0 +1,89 @@
+<ion-header [translucent] ="true">
+  <ion-toolbar color ="green">
+    <ion-title>
+     devis
+    </ion-title>
+    <ion-buttons slot = "start">
+      <ion-menu-button  menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      
+      <ion-button (click)="clickedSearchIcon($event)">
+        <ion-icon  slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="modification()">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+
+  </ion-toolbar>
+  <ion-list *ngIf="afficherModification" class="modifierDevis">
+    <ion-item (click)="Modifier()">Modifier</ion-item>
+    <ion-item (click)="Supprimer()">Supprimer</ion-item>
+  </ion-list>
+</ion-header>
+
+
+
+<!-- Recherche des devis avec filtration -->
+
+
+
+<ion-item lines = "full" *ngIf="showSearchBar" >
+  <ion-searchbar
+  
+search-icon ="search-outline"
+showcancelbutton=""
+(ionInput)="filterList($event)"
+placeholder="Rechercher"
+></ion-searchbar>
+  <ion-label style = "color:#999"></ion-label>
+  <ion-select interface="popover" [(ngModel)]="filtrer">
+    <ion-select-option value="numero"> Numéro</ion-select-option>
+   <ion-select-option value="date"> Date</ion-select-option>
+   
+  </ion-select>
+  
+</ion-item> 
+
+<ion-content class ="ion-padding">
+  <!--
+ <ion-toolbar>
+  <ion-buttons slot="start" >
+    <ion-button color = "success" (click)="Modifier()">
+      Modifier
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="end" >
+    <ion-button color ="success" (click)="Supprimer()">
+      Supprimer
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+-->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  color="success" >
+    <!-- ajout d'un nouveau devis -->
+    <ion-fab-button color = "green"  class="addDevis">
+      <ion-icon name="add" (click)="ajouterDevis()" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+<!-- Liste des devis de tous les clients-->
+  <ion-list  *ngFor = "let proforma of displayDevis " > 
+    
+    <ion-item button  (click)="detailDevis(proforma.id_proforma)">
+    <ion-label>
+      <h2> Numéro : {{proforma.num_proforma}}</h2>
+      
+       <p> Client : {{ proforma.design_client}}</p>
+      </ion-label>
+      <ion-icon name="remove-circle" side="start" *ngIf= "showDelete" button (click)=" SupprimerDevis(proforma.id_proforma)"></ion-icon>
+      <ion-icon name="create" side="start" *ngIf="showEdit" button (click)="ModifierDevis( proforma  )"></ion-icon>
+      </ion-item>
+     
+    
+  
+    </ion-list>
+   
+</ion-content>

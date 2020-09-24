@@ -1,0 +1,73 @@
+
+  
+    
+    <ion-header>
+      <div class ="ion-text-end">
+        <ion-button (click)="closeModal()" fill="clear" color ="danger"> 
+          
+          <ion-icon name="close" slot="start"></ion-icon>
+          
+          </ion-button>
+       
+      </div>
+    </ion-header>
+    
+    
+    <ion-content class="padding">
+    
+    <!-- afficher les details d'un devis et le montant des 
+    produits dans ce devis -->
+    <ion-list>
+    <ion-item >   
+      <ion-label position = "fixed" > 
+        <h2 class="one"> Numéro : </h2>
+       </ion-label>
+        <b class = "two"> {{BonLivAfficher.num_bonLiv}}</b> 
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Date : </h2> 
+      </ion-label>
+      <b class="Total"> {{BonLivAfficher.date_bonLiv}}</b> 
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Client : </h2> </ion-label>
+      <b class="Total"> {{BonLivAfficher.design_client}}</b> 
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Total HT: </h2> </ion-label>
+      <b class="Total"> {{BonLivAfficher.totalHT}}</b>
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Total TVA : </h2> </ion-label>
+      <b class="Total"> {{BonLivAfficher.totalTVA}}</b>
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed"> <h2> Total TTC :  </h2> </ion-label>
+      <b class="Total"> {{BonLivAfficher.totalTTC}}</b>
+    </ion-item>
+    
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Remise   </h2> </ion-label>
+      <b style="margin-left: -35px;">  ( {{BonLivAfficher.Remise }}%):</b>
+      <b style="margin-left: 25px;">  {{BonLivAfficher.montantRemise}}</b>
+    </ion-item>
+    
+    <ion-item>  
+    <ion-label position = "fixed" > <h2> Total : </h2> </ion-label>
+    <b class="Total"> {{BonLivAfficher.total}}</b>
+    </ion-item>
+    </ion-list>
+    <div class = buttons>
+    <ion-button  (click)="ProduitsBonLivraison(BonLivAfficher.id_bonLiv)" expand="block" color = "green" >
+    Voir les produits 
+    </ion-button>
+    <ion-button (click)="ValiderBonLivraison()" expand="block" color = "green" >
+    Valider
+    </ion-button>
+    
+    <ion-button (click)= "DownloadPdf()" expand="block" color = "green" >
+    Imprimer 
+    </ion-button>
+    </div>
+    
+    </ion-content>

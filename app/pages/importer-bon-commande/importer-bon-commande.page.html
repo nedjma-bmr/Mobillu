@@ -1,0 +1,39 @@
+<ion-header>
+  
+  <ion-toolbar color="green">
+    <div class ="ion-text-end">
+      <ion-buttons slot="start">
+        <ion-button color="dark" (click)="dismissModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+        </ion-buttons>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="end" >
+    <ion-button color = "success" (click)="afficherProduitsCommande()" *ngIf="select">
+      Suivant
+    </ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+
+<ion-content class ="ion-padding">
+
+
+  <ion-list lines="full" style="    margin-top: -19px;">
+ <ion-item *ngFor = "let commande of CommandesImporter ; let i = index">    
+<ion-label> Numéro de Commande : {{commande.NumCmd}}
+  <br/>
+  <p>       Date de Commande : {{commande.date}} </p>
+  <br/>
+
+         
+</ion-label>
+<ion-checkbox  [(ngModel)]="commande.value"  color="primary"  slot="start"  (click)="SelectioncommandeImporter(commande.NumCmd)"></ion-checkbox>
+</ion-item>
+  
+  </ion-list>
+
+</ion-content>

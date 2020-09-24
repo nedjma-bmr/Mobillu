@@ -1,0 +1,79 @@
+
+<ion-header>
+  
+</ion-header>
+
+<ion-toolbar>
+    
+  <ion-title class="ion-text-center"> <div class = "toolbar-title">Produits </div></ion-title>
+  <!-- bouton retour pr fermer la modal-->
+  <ion-buttons slot="start">
+    <ion-button color="dark" (click)="closeModal()">
+    <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+
+    
+
+</ion-toolbar>
+
+<ion-content padding>
+<!-- détails d'un produit -->
+  <ion-card *ngFor="let p of livraisonProduits" >
+    
+    <ion-card-header color = "rgb(8, 60, 70)">
+      <div  style="color: white;
+      font-size: 16px;"> Produit :  {{ p.design_prod }}  </div>
+  </ion-card-header>
+ 
+  
+    <ion-col>
+      <div class="qte"> Prix de vente HT : {{p.pvht}}</div>
+      
+  </ion-col>
+  <ion-col>
+    <div class="qte"> TVA : {{p.TVA}} %</div>
+    
+</ion-col>
+
+<ion-col>
+  <div class="qte"> Prix de vente TTC : {{p.prixttc.toFixed(2)}}</div>
+  
+</ion-col>
+  
+ <ion-row class = "right">
+    <ion-col>
+      <div class="qte"> Quantité :  {{p.qte}} </div>
+    </ion-col>
+
+    
+      
+
+        <span></span>
+
+        
+         
+        
+ 
+ 
+ 
+ </ion-row>
+
+ 
+  <ion-col>
+   <div class="qte"> Prix selon quantité  : {{p.puht.toFixed(2)}}</div>
+  </ion-col>
+
+
+
+    
+  </ion-card>
+  <!-- card vide pour laisser de l'espace entre le bouton enregister et la liste -->
+
+  
+      
+</ion-content>
+  
+
+
+  

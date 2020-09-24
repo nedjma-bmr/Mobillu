@@ -1,0 +1,23 @@
+.ion-color-green {
+  --ion-color-base: rgb(13, 161, 187);
+    --ion-color-base-rgb: var(--ion-color-green-rgb);
+    --ion-color-contrast: var(--ion-color-green-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
+    --ion-color-shade: var(--ion-color-green-shade);
+    --ion-color-tint: var(--ion-color-green-tint);
+  }
+  ion-title{
+    text-align: center;
+    margin-right: 30px;
+}
+
+.active-item{
+  border-left: 10px solid var(--ion-color-green);
+}
+
+.nonActive-item{
+  border-left: 10px solid ;
+
+  color : red ; 
+
+}

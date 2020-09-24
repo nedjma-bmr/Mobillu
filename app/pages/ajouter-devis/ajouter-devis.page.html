@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color = "green">
+    <ion-buttons slot="end" full="outline">
+      <ion-button color="dark" (click)="closeModal()" >
+        <ion-icon name="close" > </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ajout Devis</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <!-- formulaire d'ajout d'un devis-->
+  <form #f="ngForm" novalidate (ngSubmit)="submitForm()" novalidate>
+<ion-toolbar>
+    <ion-item style="font-weight: 600; FONT-SIZE: 18PX;
+    margin-top: 15PX;">
+      Devis № : <div style="    FONT-SIZE: 20PX;
+      margin-left: 40PX;">   {{ this.numBonDevis }}  </div> 
+    </ion-item>
+  </ion-toolbar>
+    <ion-item lines="full" style="FONT-SIZE: 18PX;margin-top: 13PX;">
+      <ion-label position="fixed">Date : </ion-label>
+      <ion-datetime  [(ngModel)]="devisModel.date_proforma" name = "date_proforma" required #date_proformaCtrl="ngModel"
+      cancelText= "Annuler" doneText="OK" displayFormat="MMM DD, YYYY" > </ion-datetime>
+    </ion-item>
+   
+    <ion-item lines="full" class="itm">
+      
+      <ion-label style="color : dimgray ; font-weight: bold;">--Séléctionner un client-- </ion-label>
+
+<!-- permet d'afficher les produits d'une famille -->
+    <ionic-selectable 
+        
+			[(ngModel)]="clientDevis"
+			itemValueField="id"
+			itemTextField="design_client"
+      [canSearch]="true" 
+      [items]="clients"
+      headerColor="rgb(8, 60, 70)" 
+      [hasVirtualScroll]="true"
+      [ngModelOptions]="{standalone: true}"
+      searchPlaceholder="Rechercher"
+      searchFailText="Aucun client trouvé "
+      >
+      <div class ="ionic-selectable-icon"></div>
+      <ng-template ionicSelectableCloseButtonTemplate>
+				<ion-icon name="arrow-back"></ion-icon>
+			</ng-template>
+ 
+      
+    </ionic-selectable>
+  
+      </ion-item>
+
+<ion-button class="addproduit"  (click)="AjouterProduit()" color = "medium" fill="outline" >
+  <ion-icon name="add"></ion-icon> <br>
+  <ion-label color="dark" > Ajouter des produits</ion-label>
+</ion-button>
+
+    
+<br> 
+<br> 
+<br>
+      <ion-grid  >
+        
+          <!-- afficher la liste des produits ajoutés-->
+           
+          <ion-row style="margin-top: 12px;">
+              <ion-col width-15 padding style="background-color : rgb(93, 106, 114) ; 
+              color : white ;margin-left: 3px"> <div style="text-align: center;">Nom</div></ion-col>
+              <ion-col width-25 padding style="background-color : rgb(40, 42, 46)
+              ; color : white ; margin-right: -25px"><div style="margin-left: 16px;">Quantity</div></ion-col>
+              <ion-col width-35 padding style="background-color : rgb(84, 90, 102) ; 
+              color : white ; margin-right: 3px;"> <div style="text-align: center;">Prix</div> </ion-col>
+              
+            </ion-row>
+          
+      
+    
+          <ion-list >
+            <ion-item lines ="full" *ngFor="let list of receivedDevisProduit " >
+              <ion-row>
+                <ion-col width-15  > <div style="  text-align: center ; margin-right: 9px; margin-left: -12px;
+                  margin-right: -20px;"> {{list.design_prod}}</div></ion-col>
+                <ion-col width-25 style ="margin-left: 70px; margin-right: 20px;"  ><div style=" text-align: center; margin-right: 60px ; margin-left: 12px" > {{list.qte}}</div></ion-col>
+                
+                <ion-col width-15 ><div style=" text-align: center;">   {{list.pvht}}</div></ion-col>
+               
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        
+      </ion-grid>
+
+
+
+
+
+<!-- une card vide pr laisser l'espace entre form et bouton enregister -->
+      <ion-card id="basDePageVide" >
+        <p >  &nbsp;</p> 
+      </ion-card>
+    
+      <ion-row>
+        <ion-button type="submit" color="green" expand="block" 
+        id="enregisterDevis" [disabled]="!f.valid" >Enregister</ion-button>
+      </ion-row>
+  
+  </form>
+</ion-content>

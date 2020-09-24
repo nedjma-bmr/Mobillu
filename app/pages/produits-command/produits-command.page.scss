@@ -1,0 +1,71 @@
+// le style sur les textes de detail commande
+.qte{
+  font-size: 15px;
+  color:black;
+  margin-left: 0px;
+  margin-top: -2px;
+}
+.qte span{
+font-weight: bold;
+}
+// les textes des cards
+ion-card h5{
+    margin:0;
+    color:white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.my-width{
+    float:right;
+    margin-right:10px;
+}
+
+.labelOne {
+    color: dimgray;
+  }
+  .labelTwo{
+    margin-left: 140px;
+  }
+  .toolbar-title{
+    margin-right : 50px;
+  }
+   .card{
+     background-color: green;
+     margin-top: 90px;
+   }
+  .size{
+    font-size: 21px;
+  }
+   
+
+  ion-card{
+    margin-top: 16px;
+  }
+  
+  .gg{
+    margin-top: -12px;
+  }
+  
+  .droit{
+    margin-right: 50px;
+  }
+  span{
+    font-size: 16px;
+  }
+  .right{
+    margin-right: 43px;
+  }
+  
+  #enregister{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+   
+    }
+  
+  
+    #enregistrerD{
+      position: fixed;
+    bottom: -10px;
+    width: 100%;
+    }

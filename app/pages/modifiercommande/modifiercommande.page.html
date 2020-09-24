@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="green">
+    <ion-buttons slot="start" full="outline">
+      <ion-button
+        color="dark"
+        (click)="dismissModal()"
+        id="close_size"
+        style="margin-top: 14px; font-weight: bold"
+      >
+        Annuler
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulaire de modification de la commande -->
+  <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+    <!-- modifier le client -->
+    <ion-list>
+      <ion-item class="Client">
+        <ion-label style="color: dimgray; font-weight: bold">
+          Client :
+        </ion-label>
+        <ion-select
+          [(ngModel)]="cmdModel.id_client"
+          [selectedText]="cmdModel.design_client"
+          [ngModelOptions]="{standalone: true}"
+          (ionChange)="changeDesignVille(cmdModel.id_client)"
+        >
+          <ion-select-option *ngFor="let client of clients" [value]="client.id">
+            {{client.design_client}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- Modifier la date -->
+      <ion-item lines="full">
+        <ion-label position="fixed">Date : </ion-label>
+        <ion-datetime
+          [(ngModel)]="cmdModel.date"
+          name="date"
+          required
+          #date_proformaCtrl="ngModel"
+          cancelText="Annuler"
+          doneText="OK"
+          displayFormat="MMM DD, YYYY"
+        >
+        </ion-datetime>
+      </ion-item>
+    </ion-list>
+
+    <!-- accéder à la page de modification des produits de la commande-->
+    <ion-col col-6>
+      <ion-button
+        color="green"
+        class="ModifierProduits"
+        (click)="ModifierProduitsCmd(cmdModel.NumCmd)"
+        large
+        expand="block"
+      >
+        <b> Modifier les produits </b>
+      </ion-button>
+    </ion-col>
+
+    <!-- Enregsitrer les changement dans la base de données -->
+    <ion-col col-6>
+      <ion-button
+        type="submit"
+        color="green"
+        class="my-width"
+        full
+        expand="block"
+      >
+        <b>Enregistrer les modifications </b>
+      </ion-button>
+    </ion-col>
+  </form>
+</ion-content>

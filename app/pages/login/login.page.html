@@ -1,0 +1,91 @@
+<ion-header >
+  <ion-toolbar>
+
+      <!-- la configuration du serveur -->
+    <ion-buttons slot="end">
+    <ion-button (click)="goToConfigServer()">
+      <ion-icon name="settings" class="parametre"></ion-icon>
+    </ion-button>
+  </ion-buttons> 
+  </ion-toolbar> 
+
+   
+</ion-header>
+
+
+
+
+<ion-content id="login-content" padding [fullscreen]="true">
+ 
+  <div class="bg-image">
+
+  </div>
+
+
+  
+  <!-- formulaire d'identification-->
+  <form [formGroup]="form" (submit)="login()" autocomplete="off">
+    <h3 style="color: white; font-weight: bold">LOG IN</h3>
+    <ion-row>
+      <ion-col>
+        <ion-list inset class="list_login">
+          <ion-item class="champ">
+            <ion-icon
+              name="person"
+              style="margin-left: 15px; color: black"
+            ></ion-icon>
+            <div class="textbox"></div>
+            <ion-input
+              type="text"
+              required
+              formControlName="username"
+              placeholder="Identifiant"
+            ></ion-input>
+          </ion-item>
+          <br />
+          <ion-item class="champ">
+            <!--le mot de passe-->
+
+            <span class="fa fa-lock fa-2x" style="margin-left: 15px">
+              <i class="fa fa-lock-1x fa-inverse"></i>
+            </span>
+            <div class="textbox"></div>
+            <ion-input
+              [type]="showPassword ?'text' :'password'"
+              required
+              formControlName="password"
+              placeholder="Mot de passe"
+            ></ion-input>
+
+            <ion-icon
+              id="passwordToggleIcon"
+              slot="end"
+              style="color: black"
+              [name]="passwordToggleIcon"
+              (click)="togglePassword()"
+            ></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <!-- class de bootstrap de l'erreur -->
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <button
+          ion-button
+          class="login"
+          fill="outline"
+          expand="block"
+          full
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Se connecter
+        </button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
+<!-- Le footer -->

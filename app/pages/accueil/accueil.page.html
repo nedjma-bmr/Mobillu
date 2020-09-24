@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color ="green">
+        <ion-title style="text-align: center;">
+           Accueil
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-button expand="block" (click)="gestionClient()" color="secondary" style="margin-bottom: 20px;
+    margin-top: 20%;">
+     <ion-icon name="people" slot="start" style="margin-right: 45px;"></ion-icon>
+        Gestion des Clients 
+    </ion-button>
+
+    <ion-button expand="block"  (click)="Produits()"  color="secondary" style="margin-bottom: 20px;">
+        <ion-icon name="pricetags-sharp" slot="start" style="margin-right: 45px;"></ion-icon>
+        Catalogue des produits 
+    </ion-button>
+
+    <ion-button expand="block" (click)="GestionVentes()" color="secondary" style="margin-bottom: 20px;">
+       Gestion de ventes 
+    </ion-button>
+</ion-content>

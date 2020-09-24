@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar color = "green">
+    <ion-buttons slot="start" full="outline">
+      <ion-button color="dark" (click)="dismissModal()" id="close_size" 
+      style="margin-top: 14px;">
+        Annuler
+      </ion-button>
+    </ion-buttons>
+   
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+
+
+  <form #f="ngForm" novalidate   (ngSubmit)="onSubmit()">
+    <ion-list>
+     <!-- <ion-item lines="full" class="itm">
+      
+        <ion-label style="color : dimgray ; font-weight: bold;">Client  </ion-label>
+  
+   permet d'afficher les produits d'une famille 
+      <ionic-selectable 
+          
+        [(ngModel)]="ClientModifier"
+        itemValueField="id"
+        itemTextField="design_client"
+        [canSearch]="true" 
+        [items]="clients"
+        headerColor="success" 
+        [hasVirtualScroll]="true"
+        [ngModelOptions]="{standalone: true}"
+        >
+        <div class ="ionic-selectable-icon"></div>
+        <ng-template ionicSelectableCloseButtonTemplate>
+          <ion-icon name="arrow-back"></ion-icon>
+        </ng-template>
+   
+        
+      </ionic-selectable>
+    
+        </ion-item>
+
+      -->
+
+
+        <ion-item class="Client">
+          <ion-label style="color : dimgray ; font-weight : bold" >  Client :  </ion-label>
+          <ion-select  [(ngModel)]="devisModel.id_client" [selectedText]="devisModel.design_client"
+           [ngModelOptions]="{standalone: true}" (ionChange)="changeDesignClient(devisModel.id_client)">
+          <ion-select-option *ngFor = "let client of clients" [value]="client.id" > 
+            {{client.design_client}}
+          </ion-select-option>
+          
+          </ion-select>
+          </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label position="fixed">Date : </ion-label>
+      <ion-datetime  [(ngModel)]="devisModel.date_proforma" name = "date_proforma" required #date_proformaCtrl="ngModel"
+      cancelText= "Annuler" doneText="OK" displayFormat="MMM DD, YYYY" > </ion-datetime>
+    </ion-item>
+
+
+
+
+
+
+  
+    </ion-list>
+
+
+    <ion-col col-6>
+      <ion-button  color="green" class="ModifierProduits" (click)="ModifierProduitsDevis(devisModel.id_proforma)" 
+      large  expand="block">
+        <b> Modifier les produits </b>
+      </ion-button>
+    </ion-col> 
+
+    <ion-col col-6> 
+      <ion-button type="submit"  color="green" class="my-width"  large expand="block" >
+        <b>Enregistrer les modifications </b>
+      </ion-button>
+    </ion-col>
+    
+    
+
+   
+
+   
+  </form>
+
+  
+</ion-content>

@@ -1,0 +1,85 @@
+/* le style de l avatar ou est écrit le numéro de la commande*/
+.avatar{
+  background-color: #bd2c08;
+  width: 100% ;
+  height: 100% ;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue ;
+  }
+  ion-title{
+      text-align: center;
+  }
+  
+
+
+ion-button:hover{
+cursor: pointer;
+}
+
+  .ion-color-green {
+    --ion-color-base: rgb(13, 161, 187);
+      --ion-color-base-rgb: var(--ion-color-green-rgb);
+      --ion-color-contrast: var(--ion-color-green-contrast);
+      --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
+      --ion-color-shade: var(--ion-color-green-shade);
+      --ion-color-tint: var(--ion-color-green-tint);
+    }
+  
+    .ion-invalid.ion-touched ion-label {
+      color: var(--ion-color-danger);
+  }
+  .itm{
+    margin-top: 16px;
+  }
+  #enregisterDevis{
+    position: fixed;
+    bottom: 10px;
+    margin: 2px !important;
+    width: 96%;
+  }
+ 
+
+  .searchbar{
+    margin-top: 12px;
+  }
+  
+  .alignerTitre{
+    text-align: center;
+    margin-right: 12px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  .ionic-selectable-icon{
+    margin-top: -12px;
+  }
+  
+ ion-button:hover{
+  cursor: pointer;
+ }
+
+ /* le style du button ajouter produit*/
+ .addproduit{
+  width: 60%;
+  margin-top: 20px;
+  margin-right: 10px;
+  border-radius: 20px;
+  float: right;
+   display: flex;
+   justify-items: baseline;
+}
+.addproduit:hover{
+  cursor:pointer;
+}
+.my-width{
+  display: flex;
+   float: left; 
+   margin-top: 40%; 
+   width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+

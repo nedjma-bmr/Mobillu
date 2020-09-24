@@ -1,0 +1,35 @@
+  
+
+.ion-color-green {
+  --ion-color-base: rgb(13, 161, 187);
+    --ion-color-base-rgb: var(--ion-color-green-rgb);
+    --ion-color-contrast: var(--ion-color-green-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
+    --ion-color-shade: var(--ion-color-green-shade);
+    --ion-color-tint: var(--ion-color-green-tint);
+  }
+ion-icon {
+  
+  font-size: 30px;
+}
+
+.modifierDevis{
+  position: fixed;
+    right: 0;
+    width: 50%;
+    /* border: 1px solid; */
+    border-radius: 6px;
+    box-shadow: 0px 0px 0px 2px #bbb;
+}
+
+ion-searchbar{
+  --border-radius: 50px;
+  --icon-color :rgb(8, 60, 70);
+  --background-color : gray ; 
+}
+
+.addDevis{
+  position: fixed;
+    bottom: 0;
+    margin-left: -50PX;
+}

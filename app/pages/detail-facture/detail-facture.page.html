@@ -1,0 +1,74 @@
+
+  
+    
+    <ion-header>
+      <div class ="ion-text-end">
+        <ion-button (click)="closeModal()" fill="clear" color ="danger"> 
+          
+          <ion-icon name="close" slot="start"></ion-icon>
+          
+          </ion-button>
+       
+      </div>
+    </ion-header>
+    
+    
+    <ion-content class="padding">
+    
+    <!-- afficher les details d'un devis et le montant des 
+    produits dans ce devis -->
+    <ion-list>
+    <ion-item >   
+      <ion-label position = "fixed" > 
+        <h2 class="one"> Numéro : </h2>
+       </ion-label>
+        <b class = "two"> {{FactureAfficher.num_Fact}}</b> 
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Date : </h2> 
+      </ion-label>
+      <b class="Total"> {{FactureAfficher.date_Fact}}</b> 
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Client : </h2> </ion-label>
+      <b class="Total"> {{FactureAfficher.design_client}}</b> 
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Total HT: </h2> </ion-label>
+      <b class="Total"> {{FactureAfficher.totalHT}}</b>
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Total TVA : </h2> </ion-label>
+      <b class="Total"> {{FactureAfficher.totalTVA}}</b>
+    </ion-item>
+    <ion-item>  
+      <ion-label position = "fixed"> <h2> Total TTC :  </h2> </ion-label>
+      <b class="Total"> {{FactureAfficher.totalTTC}}</b>
+    </ion-item>
+    
+    <ion-item>  
+      <ion-label position = "fixed" > <h2> Reste Du :    </h2> </ion-label>
+     
+      <b style="margin-left: 35px;">  {{FactureAfficher.reste_du}}</b>
+    </ion-item>
+    
+    <ion-item>  
+    <ion-label position = "fixed" > <h2> Total : </h2> </ion-label>
+    <b class="Total"> {{FactureAfficher.total}}</b>
+    </ion-item>
+    </ion-list>
+    <div class = buttons>
+    <ion-button  (click)="ProduitsFacture(FactureAfficher.id_Fact)" expand="block" color = "green" >
+    Voir les produits 
+    </ion-button>
+    <ion-button (click)="PaimentFacture(FactureAfficher.id_Fact)" expand="block" color = "green" 
+    [disabled]="this.FactureAfficher.reste_du==0">
+   Paiment
+    </ion-button>
+    
+    <ion-button (click)= "DownloadPdf()" expand="block" color = "green" >
+    Imprimer 
+    </ion-button>
+    </div>
+    
+    </ion-content>

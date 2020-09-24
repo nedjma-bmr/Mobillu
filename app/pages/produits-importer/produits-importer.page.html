@@ -1,0 +1,63 @@
+<ion-toolbar>
+    
+  <ion-title class="ion-text-center"> <div class = "toolbar-title">Produits </div></ion-title>
+  <!-- bouton retour pr fermer la modal-->
+  <ion-buttons slot="start">
+    <ion-button color="dark" (click)="dismissModal()">
+    <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+
+</ion-toolbar>
+
+<ion-content>
+  <!-- détails d'un produit -->
+<ion-card *ngFor="let pro of devisProduits" style="height: auto;">
+  <ion-card-header color="principale">
+      <!-- le nom du produit --> 
+  <h5 style="font-weight: bold;" class="qte"> {{pro.design_prod}}</h5>
+  
+  
+  </ion-card-header>
+  <ion-card-content>
+    
+    <ion-col>
+      <!-- le prix du vente du produit --> 
+      <div class="qte"> Prix de vente HT : {{pro.pvht}} (DA) </div>
+      
+  </ion-col>
+  <!-- la TVA sur ce produit --> 
+  <ion-col>
+    <div class="qte"> TVA : {{pro.TVA}} %</div>
+    
+</ion-col>
+<!-- le prix du vente TTC --> 
+<ion-col>
+  <div class="qte"> Prix de vente TTC : {{pro.prixttc.toFixed(2)}} (DA)</div>
+  
+</ion-col>
+  <!-- la quantité du produit dans la commande-->
+    <ion-col>
+      <h3 class="qte"> Quantité : {{pro.qte}}</h3>
+    </ion-col>
+
+ 
+ <!-- le prix ttc * la qte du produit -->
+  <ion-col>
+   <div class="qte"> Prix selon quantité  : {{pro.puht}} (DA)</div>
+  </ion-col>
+
+
+  </ion-card-content>
+     
+  
+</ion-card>
+<!-- fermer la page-->
+<ion-button  class="my-width"  large (click)="dismissModal()" >
+  <b>Fermer</b>
+</ion-button>
+<!-- Enregistrer les informations du devis importé dans la nouvelle commande -->
+<ion-button  class="my-width"  large (click)="importer()"  >
+  <b>Enregistrer</b>
+</ion-button>
+</ion-content>

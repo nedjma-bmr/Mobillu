@@ -1,0 +1,62 @@
+ion-item {
+    margin-left: 30px;
+    font-size: 18px;
+    font-weight: bolder;
+   
+    color: dimgrey;
+}
+ion-datetime{
+    margin-right: 95px;
+}
+
+.ionic-selectable-icon{
+    margin-top: -12px;
+  }
+
+  .Client{
+    margin-top: 20px;
+    text-align: center;
+    margin-right: 20px;
+    color: dimgray; 
+    font-weight: revert;
+    font-size: 20px;
+    
+  }
+
+  .itm{
+    margin-top: 16px;
+    margin-left: -10px;
+  }
+
+  .ion-color-green {
+    --ion-color-base: rgb(13, 161, 187);
+    --ion-color-base-rgb: var(--ion-color-green-rgb);
+    --ion-color-contrast: var(--ion-color-green-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
+    --ion-color-shade: var(--ion-color-green-shade);
+    --ion-color-tint: var(--ion-color-green-tint);
+  }
+
+  .NouveauBonLiv{
+		width:45%;
+	}
+  
+
+  ionic-selectable{
+    margin-left: 14px;
+    margin-top: -7px;
+    max-width: 100% !important;
+}
+    
+  
+
+  .ionic-selectable-inner{
+    margin-left: -20px;
+  
+  margin-left: -20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+

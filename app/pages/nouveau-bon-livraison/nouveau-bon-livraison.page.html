@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color = "green">
+    <ion-buttons slot="start" full="outline">
+      <ion-button color="dark" (click)="closeModal()" >
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <!-- formulaire d'ajout d'un devis-->
+  <form #f="ngForm" novalidate (ngSubmit)="submitForm()" novalidate>
+<ion-toolbar>
+    <ion-item style="font-weight: 600; margin-top: 15PX;" >
+
+      
+     Client :  {{ nouveauBonLiv.design_client }}
+    </ion-item>
+  </ion-toolbar>
+    
+
+
+      <ion-item lines="full" style="FONT-SIZE: 18PX;margin-top: 13PX;">
+        <ion-label position="fixed">Date : </ion-label>
+        <ion-datetime  [(ngModel)]="nouveauBonLiv.date_bonLiv" name = "date_bonLiv" 
+        cancelText= "Annuler" doneText="OK" displayFormat="DD-MM-YYYY" > </ion-datetime>
+      </ion-item>
+      
+   
+    <ion-button class="addproduit"  (click)="AjouterProduit()" color = "medium" fill="outline" >
+      <ion-icon name="add"></ion-icon> <br>
+      <ion-label color="dark" > Ajouter des produits</ion-label>
+    </ion-button>
+
+    
+<br> 
+<br> 
+<br>
+      <ion-grid  >
+        
+          <!-- afficher la liste des produits ajoutés-->
+           
+          <ion-row style="margin-top: 12px;">
+              <ion-col width-15 padding style="background-color : rgb(49, 96, 128) ; 
+              color : white ;margin-left: 3px"> <div style="text-align: center;">Nom</div></ion-col>
+              <ion-col width-25 padding style="background-color : rgb(41, 116, 128)
+              ; color : white ; margin-right: -25px"><div style="margin-left: 16px;">Quantity</div></ion-col>
+              <ion-col width-35 padding style="background-color : rgb(67, 138, 167) ; 
+              color : white ; margin-right: 3px;"> <div style="text-align: center;">Prix</div> </ion-col>
+              
+            </ion-row>
+          
+      
+    
+          <ion-list >
+            <ion-item lines ="full" *ngFor="let list of receivedLivraisonProduit" >
+              <ion-row>
+                <ion-col width-15  > <div style="  text-align: center ; margin-right: 9px; margin-left: -12px;
+                  margin-right: -20px;"> {{list.design_prod}}</div></ion-col>
+                <ion-col width-25 style ="margin-left: 70px; margin-right: 20px;"  ><div style=" text-align: center; margin-right: 60px ; margin-left: 12px" > {{list.qte}}</div></ion-col>
+                
+                <ion-col width-15 ><div style=" text-align: center;">   {{list.pvht}}</div></ion-col>
+               
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        
+      </ion-grid>
+
+
+
+
+
+<!-- une card vide pr laisser l'espace entre form et bouton enregister -->
+      <ion-card id="basDePageVide" >
+        <p >  &nbsp;</p> 
+      </ion-card>
+    
+      <ion-row>
+        <ion-button type="submit" color="green" expand="block" 
+        id="enregisterLivraison" [disabled]="!f.valid" >Enregister</ion-button>
+      </ion-row>
+  
+  </form>
+</ion-content>
+
